@@ -5,8 +5,8 @@ provider "aws" {
 variable servers {
   type = map
   default = {
-    server1 = { name = "A" },
-    server2 = { name = "B" }
+    server1 = { name = "Server A" },
+    server2 = { name = "Server B" }
   }
 }
 module "single_ec2" {
