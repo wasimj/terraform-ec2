@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "single_ec2" {
-    source = "../modules/single-ec2"
+    source = "github.com/wasimj/ec2-instance"
 
     module_server_name = var.server_name
 }
