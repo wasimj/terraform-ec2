@@ -2,15 +2,16 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-variable servers {
-  type = map
-  default = {
-    server1 = { name = "Server A" },
-    server2 = { name = "Server B" }
-  }
-}
-module "single_ec2" {
+module "module_server1" {
     source = "github.com/wasimj/ec2-instance"
-    for_each = var.servers
-    module_server_name = each.value.name
+    module_server_name = "Server 1"
+}
+
+module "module_server2" {
+    source = "github.com/wasimj/ec2-instance"
+    module_server_name = "Server 2"
+
+    depends_on = [
+      module.module_server1
+    ]
 }
